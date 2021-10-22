@@ -1,0 +1,955 @@
+body {
+        margin: 0;
+        padding: 0;
+        font-family: 'DragonQuestFC';
+}
+
+#start {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: black;
+        z-index: 50;
+}
+
+#sponsor {
+        filter: invert();
+        margin: 300px auto;
+        background-image: url(../img/logo.png);
+        background-size: cover;
+        width: 1000px;
+        height: 260px;
+        opacity: 0;
+        transition: opacity 1s;
+        z-index: 60;
+}
+
+#sponsor.visible {
+        opacity: 1;
+}
+
+#title {
+        display: none;
+        margin: 120px auto;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        z-index: 60;
+        color: white;
+}
+
+#title.appear {
+        display: flex;
+}
+
+.main-title {
+        font-size: 128px;
+
+}
+
+.title-menu {
+        font-size: 96px;
+        cursor: pointer;
+}
+
+.title-menu:hover {
+        background: white;
+        color: black;
+}
+
+#title.visible {
+        opacity: 1;
+}
+
+#box1 {
+        position: relative;
+        background-image: url(../img/field.png);
+        background-size: cover;
+        background-position: center;
+        width: 100vw;
+        height: 100vh;
+}
+
+#chara {
+        position: absolute;
+        top: 320px;
+        left: 1400px;
+        z-index: 2;
+
+}
+
+#monster {
+        position: absolute;
+        top: 240px;
+        left: 960px;
+}
+
+#human {
+        position: absolute;
+        top: 480px;
+        left: 1200px;
+}
+
+#fairy {
+        position: absolute;
+        top: 720px;
+        left: 1440px;
+}
+
+#chara div {
+        background-size: cover;
+        width: 38px;
+        height: 48px;
+        display: none;
+}
+
+#monster div {
+        background-size: cover;
+        width: 84px;
+        height: 105px;
+        display: none;
+}
+
+#human div {
+        background-size: cover;
+        width: 38px;
+        height: 48px;
+        display: none;
+}
+
+#fairy div {
+        background-size: cover;
+        width: 38px;
+        height: 48px;
+        display: none;
+}
+
+#chara .now-direction {
+        display: block;
+}
+
+#chara1 {
+        background-image: url(../img/chara1.png);
+}
+
+#chara2 {
+        background-image: url(../img/chara2.png);
+}
+
+#chara3 {
+        background-image: url(../img/chara3.png);
+}
+
+#chara4 {
+        background-image: url(../img/chara4.png);
+}
+
+#monster .now-direction {
+        display: block;
+}
+
+#monster1 {
+        background-image: url(../img/monster1.png);
+}
+
+#monster2 {
+        background-image: url(../img/monster2.png);
+}
+
+#monster3 {
+        background-image: url(../img/monster3.png);
+}
+
+#monster4 {
+        background-image: url(../img/monster4.png);
+}
+
+#human .now-direction {
+        display: block;
+}
+
+#human1 {
+        background-image: url(../img/human1.png);
+}
+
+#human2 {
+        background-image: url(../img/human2.png);
+}
+
+#human3 {
+        background-image: url(../img/human3.png);
+}
+
+#human4 {
+        background-image: url(../img/human4.png);
+}
+
+#fairy .now-direction {
+        display: block;
+}
+
+#fairy1 {
+        background-image: url(../img/fairy1.png);
+}
+
+#fairy2 {
+        background-image: url(../img/fairy2.png);
+}
+
+#fairy3 {
+        background-image: url(../img/fairy3.png);
+}
+
+#fairy4 {
+        background-image: url(../img/fairy4.png);
+}
+
+.vibration {
+        animation: vibration .3s infinite;
+}
+
+@keyframes vibration {
+        0% {transform: translate(0px, 0px) rotateZ(0deg)}
+        25% {transform: translate(2px, 2px) rotateZ(1deg)}
+        50% {transform: translate(0px, 2px) rotateZ(0deg)}
+        75% {transform: translate(2px, 0px) rotateZ(-1deg)}
+        100% {transform: translate(0px, 0px) rotateZ(0deg)}
+}
+
+#message-box {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 48px;
+        z-index: 10;
+        width: 100vw;
+        height: 100vh;
+}
+
+.transparent {
+        opacity: 0;
+}
+
+.hidden {
+        display: none;
+}
+
+.appear {
+        display: block;
+}
+
+#message-box .encount {
+        opacity: 1;
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        line-height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        transition: opacity 1s;
+        color: white;
+}
+
+#message-box .effect {
+        filter: invert();
+}
+
+.effect2 {
+        opacity: 1;
+        content: "";
+        position:fixed;
+        transform: scale(100);
+        background-color: white;/*伸びる背景色の設定*/
+        z-index: 15;
+        /*丸のスタートの形状*/
+        top:calc(50% - 1rem);/*50%から円の半径を引いた値*/
+        left:calc(50% - 1rem);/*50%から円の半径を引いた値*/
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        animation-name:PageAnime;
+        animation-duration:2s;
+        animation-fill-mode:forwards;
+}
+
+@keyframes PageAnime{
+        0% {/*丸のスタート位置と形状*/
+                transform: scale(0);
+        }
+
+        50% {/*丸の終了位置と形状*/
+                transform: scale(100);
+        }
+
+        100% {
+                background-color: black;
+        }
+}
+.sideblack {
+        opacity: 1;
+        width: 10vw;
+        height: 100vh;
+        background: #222222;
+        transition: opacity 1s;
+        z-index: 20;
+}
+
+#left-black {
+        position: fixed;
+        top: 0;
+        left: 0;
+}
+
+#right-black {
+        position: fixed;
+        top: 0;
+        right: 0;
+}
+
+#splash {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+}
+
+.hp, .mp {
+        z-index: 30;
+        color: white;
+        font-size: 24px;
+        margin: 0;
+}
+
+.hp p, .mp p {
+        margin: 0 0 8px;
+}
+
+#enemy-hp {
+        position: fixed;
+        top: 6%;
+        left: 40%;
+}
+
+#enemy-hp-bar {
+        border: 1px solid white;
+        width: 320px;
+        height: 8px;
+        text-align: left;
+}
+
+#enemy-hp-gauge {
+        background: red;
+        width: 100%;
+        height: 100%;
+        transition: width .5s;
+        overflow: hidden;
+}
+
+#my-hp {
+        position: fixed;
+        top: 52%;
+        left: 12%;
+}
+
+#my-hp-bar {
+        border: 2px solid white;
+        width: 640px;
+        height: 16px;
+        text-align: left;
+}
+
+#my-hp-gauge {
+        background: greenyellow;
+        width: 100%;
+        height: 100%;
+        transition: width .5s;
+        overflow: hidden;
+}
+
+#my-mp {
+        position: fixed;
+        top: 58%;
+        left: 12%;
+}
+
+#my-mp-bar {
+        border: 2px solid white;
+        width: 640px;
+        height: 16px;
+        text-align: left;
+}
+
+#my-mp-gauge {
+        background: blue;
+        width: 100%;
+        height: 100%;
+        transition: width .5s;
+        overflow: hidden;
+}
+
+#battle-monster {
+        position: absolute;
+        top: 10%;
+        left: 37%;
+        width: 420px;
+        height: 420px;
+        background-image: url(../img/knight01.png);
+        background-size: cover;
+        z-index: 25;
+        transition: opacity .5s;
+}
+
+#battle-human {
+        position: absolute;
+        top: 10%;
+        left: 44%;
+        width: 224px;
+        height: 410px;
+        background-image: url(../img/battle-human.png);
+        background-size: cover;
+        z-index: 25;
+        transition: opacity .5s;
+}
+
+#battle-fairy {
+        position: absolute;
+        top: 10%;
+        left: 43%;
+        width: 224px;
+        height: 410px;
+        background-image: url(../img/battle-fairy.png);
+        background-size: cover;
+        z-index: 25;
+        transition: opacity .5s;
+}
+
+/* #battle-effect {
+        position: relative;
+        top: 0;
+        left: 0;
+} */
+
+/* #sword-effect {
+        position: fixed;
+        top: 20%;
+        left: 45%;
+        width: 120px;
+        height: 120px;
+        z-index: 30;
+        overflow: transparent;
+        transform: translate(-100%, 0);
+        transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+
+} */
+
+#finish {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 64px;
+        opacity: 0;
+        z-index: 100;
+        transition: opacity 2s;
+        pointer-events: none;
+}
+
+#finish.visible {
+        opacity: 1;
+}
+
+#sword-effect {
+        background-image: url(../img/sword-effect.png);
+        position: fixed;
+        top: 20%;
+        left: 42%;
+        width: 240px;
+        height: 240px;
+        background-size: cover;
+        z-index: 30;
+}
+
+#sword-effect.active {
+        animation: sword-move .5s;
+}
+
+@keyframes sword-move {
+        0% {
+                opacity: 0;
+                transform: translate(180px, -180px);
+        }
+
+        100% {
+                opacity: 1;
+                transform: translate(0, 0);
+        }
+}
+
+#magic-effect {
+        background-image: url(../img/magic-effect.png);
+        position: fixed;
+        top: 20%;
+        left: 42%;
+        width: 240px;
+        height: 240px;
+        background-size: cover;
+        z-index: 30;
+}
+
+#magic-effect.active {
+        animation: magic-move .5s;
+}
+
+@keyframes magic-move {
+        0% {
+                opacity: 1;
+                transform: translate(0, 240px);
+        }
+
+        50% {
+                opacity: 1;
+                transform: translate(180px, -180px);
+        }
+
+        100% {
+                opacity: 1;
+                transform: translate(0, 0);
+        }
+}
+
+#magic-effect.reflect {
+        animation: magic-reflect .5s;
+}
+
+@keyframes magic-reflect {
+        0% {
+                opacity: 1;
+                transform: translate(0, 0);
+        }
+
+        5% {
+                opacity: 1;
+                transform: translate(180px, -180px);
+        }
+
+        50% {
+                opacity: 1;
+                transform: translate(0, 240px);
+        }
+
+        95% {
+                opacity: 1;
+                transform: translate(180px, -180px);
+        }
+
+        100% {
+                opacity: 1;
+                transform: translate(0, 0);
+        }
+}
+
+#damage-effect {
+        background-image: url(../img/damage-effect.png);
+        position: fixed;
+        top: 25%;
+        left: 39%;
+        width: 360px;
+        height: 360px;
+        background-size: cover;
+        z-index: 30;
+}
+
+#damage-effect.active {
+        animation: damage-move .5s;
+}
+
+@keyframes damage-move {
+        0% {
+                opacity: 0;
+                transform: translate(180px, -180px);
+        }
+
+        100% {
+                opacity: 1;
+                transform: translate(0, 0);
+        }
+}
+
+#heal-effect1, #heal-effect2, #heal-effect3 {
+        position: fixed;
+        width: 220px;
+        height: 280px;
+        background-size: cover;
+        z-index: 30;
+}
+
+#heal-effect1 {
+        top: 320px;
+        left: 240px;
+}
+
+#heal-effect2 {
+        top: 240px;
+        right: 160px;
+}
+#heal-effect3 {
+        top: 80px;
+        left: 360px;
+}
+
+#heal-effect1.active {
+        animation: heal-move .3s;
+}
+
+#heal-effect2.active {
+        animation: heal-move .3s;
+        animation-delay: .1s;
+}
+
+#heal-effect3.active {
+        animation: heal-move .3s;
+        animation-delay: .2s;
+}
+
+@keyframes heal-move {
+        0% {
+                opacity: 1;
+                background-image: url(../img/kaifuku1.png);
+        }
+        16% {
+                opacity: 1;
+                background-image: url(../img/kaifuku2.png);
+        }
+        32% {
+                opacity: 1;
+                background-image: url(../img/kaifuku3.png);
+        }
+        48% {
+                opacity: 1;
+                background-image: url(../img/kaifuku4.png);
+        }
+        64% {
+                opacity: 1;
+                background-image: url(../img/kaifuku5.png);
+        }
+        80% {
+                opacity: 1;
+                background-image: url(../img/kaifuku6.png);
+        }
+}
+
+#battle-monster.dodge {
+        animation: dodge-move .5s;
+}
+
+@keyframes dodge-move {
+        0% {
+                transform: translateX(0);
+        }
+
+        10% {
+                transform: translateX(280px);
+        }
+
+        100% {
+                transform: translateX(0);
+        }
+}
+
+#battle-monster.guard {
+        animation: guard-move .5s;
+}
+
+@keyframes guard-move {
+        0% {
+                transform: translate(16px, -16px);
+        }
+
+        10% {
+                transform: translate(-16px, 16px);
+        }
+
+        20% {
+                transform: translate(16px, -16px);
+        }
+
+        30% {
+                transform: translate(-16px, 16px);
+        }
+
+        40% {
+                transform: translate(30px, -30px);
+        }
+
+        50% {
+                transform: translate(-30px, 30px);
+        }
+
+        60% {
+                transform: translate(0, 0);
+        }
+
+        100% {
+                transform: translate(0, 0);
+        }
+}
+
+#battle-human.dodge {
+        animation: dodge-move .5s;
+}
+
+@keyframes dodge-move {
+        0% {
+                transform: translateX(0);
+        }
+
+        10% {
+                transform: translateX(140px);
+        }
+
+        100% {
+                transform: translateX(0);
+        }
+}
+
+#battle-human.guard {
+        animation: guard-move .5s;
+}
+
+@keyframes guard-move {
+        0% {
+                transform: translate(16px, -16px);
+        }
+
+        10% {
+                transform: translate(-16px, 16px);
+        }
+
+        20% {
+                transform: translate(16px, -16px);
+        }
+
+        30% {
+                transform: translate(-16px, 16px);
+        }
+
+        40% {
+                transform: translate(30px, -30px);
+        }
+
+        50% {
+                transform: translate(-30px, 30px);
+        }
+
+        60% {
+                transform: translate(0, 0);
+        }
+
+        100% {
+                transform: translate(0, 0);
+        }
+}
+
+#battle-fairy.dodge {
+        animation: dodge-move .5s;
+}
+
+@keyframes dodge-move {
+        0% {
+                transform: translateX(0);
+        }
+
+        10% {
+                transform: translateX(140px);
+        }
+
+        100% {
+                transform: translateX(0);
+        }
+}
+
+#battle-fairy.guard {
+        animation: guard-move .5s;
+}
+
+@keyframes guard-move {
+        0% {
+                transform: translate(16px, -16px);
+        }
+
+        10% {
+                transform: translate(-16px, 16px);
+        }
+
+        20% {
+                transform: translate(16px, -16px);
+        }
+
+        30% {
+                transform: translate(-16px, 16px);
+        }
+
+        40% {
+                transform: translate(30px, -30px);
+        }
+
+        50% {
+                transform: translate(-30px, 30px);
+        }
+
+        60% {
+                transform: translate(0, 0);
+        }
+
+        100% {
+                transform: translate(0, 0);
+        }
+}
+
+#battle-window {
+        position: absolute;
+        top: 66vh;
+        left: 12vw;
+        width: 76vw;
+        height: 32vh;
+        z-index: 25;
+        color: white;
+        font-size: 48px;
+        border: 3px solid white;
+        border-radius: 8px;
+}
+
+#battle-text {
+        padding-left: 16px;
+        margin: 0;
+}
+
+.visible {
+        opacity: 1;
+}
+
+.command-box {
+        display: flex;
+        justify-content: space-between;
+        align-items:baseline;
+        color: white;
+        padding: 32px;
+}
+
+.command {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+}
+
+.command p {
+        margin: 0;
+        font-size: 48px;
+        border: 2px solid white;
+        padding: 16px 16px 48px 16px;
+        cursor: pointer;
+}
+
+.command p:hover {
+        color: black;
+        background-color: white;
+}
+
+.command p + p {
+        font-size: 24px;
+        border: none;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        top: 116px;
+        right: 0;
+}
+
+#retry {
+        display: none;
+        color: white;
+        font-size: 64px;
+        cursor: pointer;
+        z-index: 25;
+        margin: 0;
+        position: fixed;
+        top: 77%;
+        left: 43%;
+}
+
+#retry:hover {
+        color: black;
+        background-color: white;
+}
+
+#retry.appear {
+        display: inline-block;
+}
+
+#ending {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 4000px;
+        background: white;
+        display: flex;
+        justify-content: flex-start;
+        align-items:center;
+        font-size: 64px;
+        opacity: 0;
+        z-index: 100;
+        transition: opacity 2s top 30s;
+        transition-timing-function : linear;
+        pointer-events: none;
+        color: black;
+        display: flex;
+        flex-direction: column;
+}
+
+#ending.visible {
+        opacity: 1;
+        pointer-events: initial;
+}
+
+#ending.slide {
+        top: -3500px;
+}
+
+#ending #ending-title {
+        font-size: 128px;
+        padding: 240px 0;
+}
+
+.credit {
+        text-align: center;
+}
+
+#celebrate {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 128px;
+        opacity: 0;
+        z-index: 101;
+        transition: opacity 2s;
+        color: black;
+}
+
+#celebrate.visible {
+        opacity: 1;
+}
