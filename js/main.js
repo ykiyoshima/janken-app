@@ -177,7 +177,7 @@ $(function () {
                             }, 6000);
                             setTimeout(function () {
                                 $('#celebrate').addClass('visible');
-                            }, 36000);
+                            }, 51000);
                             // 処理後、改めて入力キー配列をリセット
                             input_cmd = [];
                         }
