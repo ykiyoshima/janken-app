@@ -32,7 +32,7 @@ body {
 
 #title {
         display: none;
-        margin: 120px auto;
+        margin: 64px auto;
         justify-content: space-between;
         align-items: center;
         flex-direction: column;
@@ -46,17 +46,24 @@ body {
 
 .main-title {
         font-size: 128px;
-
+        padding: 96px 0;
+        margin: 0;
 }
 
 .title-menu {
         font-size: 96px;
+        margin: 128px 0 64px;
         cursor: pointer;
 }
 
 .title-menu:hover {
         background: white;
         color: black;
+}
+
+.caution {
+        font-size: 48px;
+        margin: 0;
 }
 
 #title.visible {
@@ -356,7 +363,7 @@ body {
 
 #my-hp-bar {
         border: 2px solid white;
-        width: 640px;
+        width: 600px;
         height: 16px;
         text-align: left;
 }
@@ -377,7 +384,7 @@ body {
 
 #my-mp-bar {
         border: 2px solid white;
-        width: 640px;
+        width: 600px;
         height: 16px;
         text-align: left;
 }
@@ -908,19 +915,19 @@ body {
         align-items:center;
         font-size: 64px;
         opacity: 0;
+        transition: top 45s;
         z-index: 100;
-        transition: opacity 2s top 30s;
         transition-timing-function : linear;
         pointer-events: none;
         color: black;
-        display: flex;
         flex-direction: column;
 }
 
 #ending.visible {
-        opacity: 1;
         pointer-events: initial;
+        opacity: 1;
 }
+
 
 #ending.slide {
         top: -3500px;
@@ -941,13 +948,15 @@ body {
         left: 0;
         width: 100vw;
         height: 100vh;
-        margin: 0 auto;
+        margin: auto;
+        padding: 240px 0;
         text-align: center;
         font-size: 128px;
         opacity: 0;
         z-index: 101;
         transition: opacity 2s;
         color: black;
+        pointer-events: none;
 }
 
 #celebrate.visible {
