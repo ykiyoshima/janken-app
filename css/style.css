@@ -1,6 +1,6 @@
 @font-face {
-        font-family: "DragonQuestFC";
-        src: url("../font-family/DragonQuestFC.ttf") format("ttf");
+        font-family: 'DoragonQuestFC';
+        src: url("../font-family/DragonQuestFC.ttf") format("truetype");
 }
 
 body {
