@@ -359,6 +359,8 @@ $(function () {
         }, 100);
     });
 
+    $('#select').get(0).volume = 0.5;
+
     // 剣を薙ぎ払った時
     $('#sword').on('click', function () {
         switch (name) {
