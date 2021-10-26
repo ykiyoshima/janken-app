@@ -27,6 +27,8 @@ $(function () {
     let beat_cmd = [66, 69, 65, 84, 13];
 
     $(window).ready(function () {
+        console.log('一瞬で世界を平和にする→' + ending_cmd);
+        console.log('一瞬で敵を倒す→' + beat_cmd);
         $('#sponsor').addClass('visible');
         setTimeout(function () {
             $('#sponsor').removeClass('visible');
@@ -44,15 +46,15 @@ $(function () {
 
     $(document).on('keyup', function (e) {
         input_cmd.push(e.keyCode);
+        console.log(input_cmd);
         // コマンド入力
-        if (input_cmd[input_cmd.length - 1] != ending_cmd[input_cmd.length - 1] &&
-            input_cmd[input_cmd.length - 1] != beat_cmd[input_cmd.length - 1]) {
+        if (input_cmd[input_cmd.length - 1] !== ending_cmd[input_cmd.length - 1] &&
+            input_cmd[input_cmd.length - 1] !== beat_cmd[input_cmd.length - 1]) {
             // 入力を間違えた場合、入力キー配列をリセット（最初からやり直し）
-            console.log('wrong command!');
             input_cmd = [];
         }
         // 全ての入力コマンドが合致したら処理を発動
-        else if (input_cmd.length == ending_cmd.length) {
+        else if (input_cmd.length === ending_cmd.length) {
             // 隠しコマンドによる処理実行！
             finish();
             let timerId = setInterval( ()=>{
@@ -80,7 +82,7 @@ $(function () {
             }, 51000);
             // 処理後、改めて入力キー配列をリセット
             input_cmd = [];
-        } else if (input_cmd.length == beat_cmd.length) {
+        } else if (input_cmd.length === beat_cmd.length) {
             for (let j = 1; j < ySymbol.length; j++) {
                 if (Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[j] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[j] + 19)) ** 2)) <= 64) {
                     wins = 10;
@@ -152,6 +154,8 @@ $(function () {
                         wins = 0;
                     }, 4000);
                     setTimeout(function () {
+                        // 処理後、改めて入力キー配列をリセット
+                        input_cmd = [];
                         $('#enemy-hp-gauge').css('width', (100 * (enemyThreshold - wins) / enemyThreshold) + '%');
                         if ($('.icon').length === 0) {
                             finish();
@@ -178,8 +182,6 @@ $(function () {
                             setTimeout(function () {
                                 $('#celebrate').addClass('visible');
                             }, 51000);
-                            // 処理後、改めて入力キー配列をリセット
-                            input_cmd = [];
                         }
                     }, 5000);
                 }
@@ -188,7 +190,7 @@ $(function () {
     });
 
     $(document).on('keyup', function (e) {
-        console.log("キーコード：" + e.keyCode);
+        // console.log("キーコード：" + e.keyCode);
 
         if (Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[1] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[1] + 19)) ** 2)) <= 64 ||
             Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[2] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[2] + 19)) ** 2)) <= 64 ||
