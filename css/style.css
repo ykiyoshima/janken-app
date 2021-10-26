@@ -914,7 +914,7 @@ body {
         top: 0;
         left: 0;
         width: 100vw;
-        height: 4000px;
+        height: 4500px;
         background: white;
         display: flex;
         justify-content: flex-start;
@@ -936,7 +936,7 @@ body {
 
 
 #ending.slide {
-        top: -3500px;
+        top: -4000px;
 }
 
 #ending #ending-title {
