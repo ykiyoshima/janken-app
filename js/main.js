@@ -42,6 +42,7 @@ $(function () {
     $('.title-menu').on('click', function () {
         $('#start').remove();
         $('#field-bgm').get(0).play();
+        $('#arrows').addClass('active');
     });
 
     $(document).on('keyup', function (e) {
@@ -151,6 +152,7 @@ $(function () {
                         $('.mp').removeClass('visible');
                         $('#left-black').removeClass('sideblack');
                         $('#right-black').removeClass('sideblack');
+                        $('#arrows').addClass('active');
                         wins = 0;
                     }, 4000);
                     setTimeout(function () {
@@ -257,7 +259,142 @@ $(function () {
 
         for (let j = 1; j < ySymbol.length; j++) {
             if (Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[j] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[j] + 19)) ** 2)) <= 32) {
+                $('#arrows').removeClass('active');
                 wins = 0;
+                let timerId = setInterval( ()=>{
+                    // ボリュームが0になったら終了
+                    if( ($('#field-bgm').get(0).volume - 0.1) <= 0 ){
+                        $('#field-bgm').get(0).volume = 0;
+                        $('#field-bgm').get(0).pause();
+                        $('#field-bgm').get(0).currentTime = 0;
+                        clearInterval(timerId);  //タイマー解除
+                    }
+                    // 0.1ずつボリュームを減らしていく
+                    else{
+                        $('#field-bgm').get(0).volume -= 0.1;
+                    }
+                }, 200);
+
+                setTimeout(function () {
+                    $('#message').addClass('encount');
+                    $('#left-black').addClass('sideblack')
+                    $('#right-black').addClass('sideblack')
+                }, 300);
+                setTimeout(function () {
+                    $('#message').addClass('effect');
+                    const effectId = setInterval(function () {
+                        $('#message').removeClass('effect');
+                        setTimeout(function () {
+                            $('#message').addClass('effect');
+                        }, 50)
+                    }, 100);
+                    setTimeout(function () {
+                        clearInterval(effectId);
+                    }, 650);
+                }, 1300);
+                setTimeout(function () {
+                    $('#message').removeClass('effect');
+                    $('#splash').addClass('effect2');
+                    $('#battle-start').get(0).volume = 0.5;
+                    $('#battle-start').get(0).play();
+                }, 2000);
+                setTimeout(function () {
+                    $(battleEnemy[j]).addClass('visible');
+                }, 4000);
+                setTimeout(function () {
+                    $('#battle-start').get(0).pause();
+                    $('#battle-start').get(0).currentTime = 0;
+                    $('#battle-window').addClass('visible');
+                    $('#battle-text').text(enemyName[j] + 'が　あらわれた！')
+                    if (enemyName[j] === 'しっこくのきし') {
+                        $('#darkknight-bgm').get(0).volume = 0.5;
+                        $('#darkknight-bgm').get(0).play();
+                    } else {
+                        $('#battle-bgm').get(0).volume = 0.5;
+                        $('#battle-bgm').get(0).play();
+                    }
+                }, 5000);
+                setTimeout(function () {
+                    $('#battle-commands').addClass('appear');
+                    $('.hp').addClass('visible');
+                    $('.mp').addClass('visible');
+                }, 8000);
+                enemy = battleEnemy[j];
+                name = enemyName[j];
+            }
+        }
+    });
+
+    $(document).on('click', 'i', function () {
+        // console.log("キーコード：" + e.keyCode);
+
+        if (Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[1] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[1] + 19)) ** 2)) <= 32 ||
+            Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[2] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[2] + 19)) ** 2)) <= 32 ||
+            Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[3] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[3] + 19)) ** 2)) <= 32) {
+            return false;
+        }
+
+        switch (this.id) {
+            case 'up': // ↑
+                notCharaDirection = charaDirection.filter((value, index) => index !== 3);
+                $(charaDirection[3]).addClass('now-direction');
+                $(notCharaDirection.join(',')).removeClass('now-direction');
+                move1(-dis, 0);
+                break;
+            case 'left': // ←
+                notCharaDirection = charaDirection.filter((value, index) => index !== 1);
+                $(charaDirection[1]).addClass('now-direction');
+                $(notCharaDirection.join(',')).removeClass('now-direction');
+                move1(0, -dis);
+                break;
+            case 'right': // →
+                notCharaDirection = charaDirection.filter((value, index) => index !== 2);
+                $(charaDirection[2]).addClass('now-direction');
+                $(notCharaDirection.join(',')).removeClass('now-direction');
+                move1(0, dis);
+                break;
+            case 'down': // ↓
+                notCharaDirection = charaDirection.filter((value, index) => index !== 0);
+                $(charaDirection[0]).addClass('now-direction');
+                $(notCharaDirection.join(',')).removeClass('now-direction');
+                move1(dis, 0);
+                break;
+            default:
+        }
+
+        for (let i = 1; i < ySymbol.length; i++) {
+            let randomNumber3 = Math.floor(Math.random() * 4);
+            if (randomNumber3 === 0) {
+                notDirection[i] = direction[i].filter((value, index) => index !== 3);
+                $(direction[i][3]).addClass('now-direction');
+                $(notDirection[i].join(',')).removeClass('now-direction');
+                move(-dis, 0, ySymbol[i], xSymbol[i], symbolId[i]);
+            } else if (randomNumber3 === 1) {
+                notDirection[i] = direction[i].filter((value, index) => index !== 1);
+                $(direction[i][1]).addClass('now-direction');
+                $(notDirection[i].join(',')).removeClass('now-direction');
+                move(0, -dis, ySymbol[i], xSymbol[i], symbolId[i]);
+            } else if (randomNumber3 === 2) {
+                notDirection[i] = direction[i].filter((value, index) => index !== 2);
+                $(direction[i][2]).addClass('now-direction');
+                $(notDirection[i].join(',')).removeClass('now-direction');
+                move(0, dis, ySymbol[i], xSymbol[i], symbolId[i]);
+            } else if (randomNumber3 === 3) {
+                notDirection[i] = direction[i].filter((value, index) => index !== 0);
+                $(direction[i][0]).addClass('now-direction');
+                $(notDirection[i].join(',')).removeClass('now-direction');
+                move(dis, 0, ySymbol[i], xSymbol[i], symbolId[i]);
+            } else {
+                alert('Error!');
+            }
+        }
+
+        for (let j = 1; j < ySymbol.length; j++) {
+            if (Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[j] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[j] + 19)) ** 2)) <= 32) {
+                $('#arrows').removeClass('active');
+
+                wins = 0;
+
                 let timerId = setInterval( ()=>{
                     // ボリュームが0になったら終了
                     if( ($('#field-bgm').get(0).volume - 0.1) <= 0 ){
@@ -880,6 +1017,7 @@ $(function () {
                 $('#battle-commands').removeClass('appear');
             }, 2000);
             setTimeout(function () {
+                $('#arrows').addClass('active');
                 $('#beat').get(0).pause();
                 $('#beat').get(0).currentTime = 0;
                 $('#battle-bgm').get(0).volume = 0.5;
@@ -892,6 +1030,7 @@ $(function () {
                 $('.mp').removeClass('visible');
                 $('#left-black').removeClass('sideblack');
                 $('#right-black').removeClass('sideblack');
+
                 wins = 0;
             }, 4000);
             setTimeout(function () {

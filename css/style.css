@@ -470,7 +470,7 @@ body {
         align-items: center;
         font-size: 64px;
         opacity: 0;
-        z-index: 100;
+        z-index: 99;
         transition: opacity 2s;
         pointer-events: none;
 }
@@ -1073,6 +1073,49 @@ body {
                 display: none;
         }
 
+        #arrows {
+                display: none;
+        }
+
+        #arrows.active {
+                z-index: 80;
+                color: white;
+                font-size: 48px;
+                display: block;
+        }
+
+        .fa-arrow-up {
+                z-index: 80;
+                position: fixed;
+                top: 180px;
+                left: 100px;
+                background: rgba(0, 0, 0, 0.2);
+        }
+
+        .fa-arrow-right {
+                z-index: 80;
+                position: fixed;
+                top: 240px;
+                left: 160px;
+                background: rgba(0, 0, 0, 0.2);
+        }
+
+        .fa-arrow-down {
+                z-index: 80;
+                position: fixed;
+                top: 300px;
+                left: 100px;
+                background: rgba(0, 0, 0, 0.2);
+        }
+
+        .fa-arrow-left {
+                z-index: 80;
+                position: fixed;
+                top: 240px;
+                left: 40px;
+                background: rgba(0, 0, 0, 0.2);
+        }
+
         #message-box {
                 position: fixed;
                 top: 0;
@@ -1524,7 +1567,7 @@ body {
                 top: 0;
                 left: 0;
                 width: 100vw;
-                height: 4000px;
+                height: 2000px;
                 background: white;
                 display: flex;
                 justify-content: flex-start;
@@ -1541,12 +1584,12 @@ body {
 
 
         #ending.slide {
-                top: -1000px;
+                top: -1700px;
         }
 
         #ending #ending-title {
                 font-size: 64px;
-                padding: 120px 0;
+                padding: 80px 0;
         }
 
         #celebrate {
@@ -1556,7 +1599,7 @@ body {
                 width: 100vw;
                 height: 100vh;
                 margin: auto;
-                padding: 120px 0;
+                padding: 80px 0;
                 text-align: center;
                 font-size: 64px;
                 opacity: 0;
