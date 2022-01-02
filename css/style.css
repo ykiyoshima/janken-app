@@ -1,6 +1,6 @@
 @font-face {
         font-family: 'DoragonQuestFC';
-        src: url("../font-family/DragonQuestFC.ttf") format("truetype");
+        src: url("../font-family/DragonQuestFC.ttf");
 }
 
 body {
@@ -967,4 +967,602 @@ body {
 
 #celebrate.visible {
         opacity: 1;
+}
+
+@media screen and (max-width: 1000px) {
+        #start {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: black;
+                z-index: 50;
+        }
+
+        #sponsor {
+                filter: invert();
+                margin: 30vh auto;
+                background-image: url(../img/logo.png);
+                background-size: cover;
+                width: 50%;
+                height: 28%;
+                opacity: 0;
+                transition: opacity 1s;
+                z-index: 60;
+        }
+
+        #title {
+                display: none;
+                margin: 6% auto;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: column;
+                color: white;
+                z-index: 60;
+        }
+
+        .main-title {
+                font-size: 64px;
+                padding: 4% 0;
+                margin: 0;
+        }
+
+        .title-menu {
+                font-size: 48px;
+                margin: 4% 0 2%;
+                cursor: pointer;
+        }
+
+        .caution {
+                font-size: 24px;
+                margin: 0;
+        }
+
+        #chara {
+                position: absolute;
+                top: 128px;
+                left: 700px;
+                z-index: 2;
+
+        }
+
+        #monster {
+                position: absolute;
+                top: 32px;
+                left: 400px;
+        }
+
+        #human {
+                position: absolute;
+                top: 160px;
+                left: 540px;
+        }
+
+        #fairy {
+                position: absolute;
+                top: 288px;
+                left: 680px;
+        }
+
+        #chara div {
+                background-size: cover;
+                width: 19px;
+                height: 24px;
+                display: none;
+        }
+
+        #monster div {
+                background-size: cover;
+                width: 42px;
+                height: 52px;
+                display: none;
+        }
+
+        #human div {
+                background-size: cover;
+                width: 19px;
+                height: 24px;
+                display: none;
+        }
+
+        #fairy div {
+                background-size: cover;
+                width: 19px;
+                height: 24px;
+                display: none;
+        }
+
+        #message-box {
+                position: fixed;
+                top: 0;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 24px;
+                z-index: 10;
+                width: 100vw;
+                height: 100vh;
+        }
+
+        .hp, .mp {
+                z-index: 30;
+                color: white;
+                font-size: 12px;
+                margin: 0;
+        }
+
+        .hp p, .mp p {
+                margin: 0 0 4px;
+        }
+
+        #enemy-hp {
+                position: fixed;
+                top: 6%;
+                left: 40%;
+        }
+
+        #enemy-hp-bar {
+                border: 1px solid white;
+                width: 160px;
+                height: 4px;
+                text-align: left;
+        }
+
+        #enemy-hp-gauge {
+                background: red;
+                width: 100%;
+                height: 100%;
+                transition: width .5s;
+                overflow: hidden;
+        }
+
+        #my-hp {
+                position: fixed;
+                top: 52%;
+                left: 12%;
+        }
+
+        #my-hp-bar {
+                border: 2px solid white;
+                width: 300px;
+                height: 8px;
+                text-align: left;
+        }
+
+        #my-hp-gauge {
+                background: greenyellow;
+                width: 100%;
+                height: 100%;
+                transition: width .5s;
+                overflow: hidden;
+        }
+
+        #my-mp {
+                position: fixed;
+                top: 58%;
+                left: 12%;
+        }
+
+        #my-mp-bar {
+                border: 2px solid white;
+                width: 300px;
+                height: 8px;
+                text-align: left;
+        }
+
+        #my-mp-gauge {
+                background: blue;
+                width: 100%;
+                height: 100%;
+                transition: width .5s;
+                overflow: hidden;
+        }
+
+        #battle-monster {
+                position: absolute;
+                top: 10%;
+                left: 37%;
+                width: 210px;
+                height: 210px;
+                background-image: url(../img/knight01.png);
+                background-size: cover;
+                z-index: 25;
+                transition: opacity .5s;
+        }
+
+        #battle-human {
+                position: absolute;
+                top: 10%;
+                left: 44%;
+                width: 112px;
+                height: 205px;
+                background-image: url(../img/battle-human.png);
+                background-size: cover;
+                z-index: 25;
+                transition: opacity .5s;
+        }
+
+        #battle-fairy {
+                position: absolute;
+                top: 10%;
+                left: 43%;
+                width: 112px;
+                height: 205px;
+                background-image: url(../img/battle-fairy.png);
+                background-size: cover;
+                z-index: 25;
+                transition: opacity .5s;
+        }
+
+        #finish {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 32px;
+                opacity: 0;
+                z-index: 100;
+                transition: opacity 2s;
+                pointer-events: none;
+        }
+
+        #sword-effect {
+                background-image: url(../img/sword-effect.png);
+                position: fixed;
+                top: 20%;
+                left: 42%;
+                width: 120px;
+                height: 120px;
+                background-size: cover;
+                z-index: 30;
+        }
+
+        @keyframes sword-move {
+                0% {
+                        opacity: 0;
+                        transform: translate(90px, -90px);
+                }
+
+                100% {
+                        opacity: 1;
+                        transform: translate(0, 0);
+                }
+        }
+
+        #magic-effect {
+                background-image: url(../img/magic-effect.png);
+                position: fixed;
+                top: 20%;
+                left: 42%;
+                width: 120px;
+                height: 120px;
+                background-size: cover;
+                z-index: 30;
+        }
+
+        @keyframes magic-move {
+                0% {
+                        opacity: 1;
+                        transform: translate(0, 120px);
+                }
+
+                50% {
+                        opacity: 1;
+                        transform: translate(90px, -90px);
+                }
+
+                100% {
+                        opacity: 1;
+                        transform: translate(0, 0);
+                }
+        }
+
+        @keyframes magic-reflect {
+                0% {
+                        opacity: 1;
+                        transform: translate(0, 0);
+                }
+
+                5% {
+                        opacity: 1;
+                        transform: translate(90px, -90px);
+                }
+
+                50% {
+                        opacity: 1;
+                        transform: translate(0, 120px);
+                }
+
+                95% {
+                        opacity: 1;
+                        transform: translate(90px, -90px);
+                }
+
+                100% {
+                        opacity: 1;
+                        transform: translate(0, 0);
+                }
+        }
+
+        #damage-effect {
+                background-image: url(../img/damage-effect.png);
+                position: fixed;
+                top: 25%;
+                left: 39%;
+                width: 180px;
+                height: 180px;
+                background-size: cover;
+                z-index: 30;
+        }
+
+        @keyframes damage-move {
+                0% {
+                        opacity: 0;
+                        transform: translate(90px, -90px);
+                }
+
+                100% {
+                        opacity: 1;
+                        transform: translate(0, 0);
+                }
+        }
+
+        #heal-effect1, #heal-effect2, #heal-effect3 {
+                position: fixed;
+                width: 110px;
+                height: 140px;
+                background-size: cover;
+                z-index: 30;
+        }
+
+        #heal-effect1 {
+                top: 160px;
+                left: 120px;
+        }
+
+        #heal-effect2 {
+                top: 120px;
+                right: 80px;
+        }
+        #heal-effect3 {
+                top: 40px;
+                left: 180px;
+        }
+
+        @keyframes dodge-move {
+                0% {
+                        transform: translateX(0);
+                }
+
+                10% {
+                        transform: translateX(140px);
+                }
+
+                100% {
+                        transform: translateX(0);
+                }
+        }
+
+        @keyframes guard-move {
+                0% {
+                        transform: translate(8px, -8px);
+                }
+
+                10% {
+                        transform: translate(-8px, 8px);
+                }
+
+                20% {
+                        transform: translate(8px, -8px);
+                }
+
+                30% {
+                        transform: translate(-8px, 8px);
+                }
+
+                40% {
+                        transform: translate(15px, -15px);
+                }
+
+                50% {
+                        transform: translate(-15px, 15px);
+                }
+
+                60% {
+                        transform: translate(0, 0);
+                }
+
+                100% {
+                        transform: translate(0, 0);
+                }
+        }
+
+        @keyframes dodge-move {
+                0% {
+                        transform: translateX(0);
+                }
+
+                10% {
+                        transform: translateX(70px);
+                }
+
+                100% {
+                        transform: translateX(0);
+                }
+        }
+
+        @keyframes guard-move {
+                0% {
+                        transform: translate(8px, -8px);
+                }
+
+                10% {
+                        transform: translate(-8px, 8px);
+                }
+
+                20% {
+                        transform: translate(8px, -8px);
+                }
+
+                30% {
+                        transform: translate(-8px, 8px);
+                }
+
+                40% {
+                        transform: translate(15px, 15px);
+                }
+
+                50% {
+                        transform: translate(15px,15px);
+                }
+
+                60% {
+                        transform: translate(0, 0);
+                }
+
+                100% {
+                        transform: translate(0, 0);
+                }
+        }
+
+        @keyframes dodge-move {
+                0% {
+                        transform: translateX(0);
+                }
+
+                10% {
+                        transform: translateX(70px);
+                }
+
+                100% {
+                        transform: translateX(0);
+                }
+        }
+
+        #battle-window {
+                position: absolute;
+                top: 66vh;
+                left: 12vw;
+                width: 76vw;
+                height: 32vh;
+                z-index: 25;
+                color: white;
+                font-size: 24px;
+                border: 3px solid white;
+                border-radius: 8px;
+        }
+
+        #battle-text {
+                padding-left: 8px;
+                margin: 0;
+        }
+
+        .visible {
+                opacity: 1;
+        }
+
+        .command-box {
+                display: flex;
+                justify-content: space-between;
+                align-items:baseline;
+                color: white;
+                padding: 16px;
+        }
+
+        .command {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                position: relative;
+        }
+
+        .command p {
+                margin: 0;
+                font-size: 24px;
+                border: 2px solid white;
+                padding: 8px 8px 24px 8px;
+                cursor: pointer;
+        }
+
+        .command p:hover {
+                color: black;
+                background-color: white;
+        }
+
+        .command p + p {
+                font-size: 12px;
+                border: none;
+                padding: 0;
+                margin: 0;
+                position: absolute;
+                top: 58px;
+                right: 0;
+        }
+
+        #retry {
+                display: none;
+                color: white;
+                font-size: 32px;
+                cursor: pointer;
+                z-index: 25;
+                margin: 0;
+                position: fixed;
+                top: 77%;
+                left: 43%;
+        }
+
+        #ending {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 4000px;
+                background: white;
+                display: flex;
+                justify-content: flex-start;
+                align-items:center;
+                font-size: 32px;
+                opacity: 0;
+                transition: top 45s;
+                z-index: 100;
+                transition-timing-function : linear;
+                pointer-events: none;
+                color: black;
+                flex-direction: column;
+        }
+
+
+        #ending.slide {
+                top: -1000px;
+        }
+
+        #ending #ending-title {
+                font-size: 64px;
+                padding: 120px 0;
+        }
+
+        #celebrate {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                margin: auto;
+                padding: 120px 0;
+                text-align: center;
+                font-size: 64px;
+                opacity: 0;
+                z-index: 101;
+                transition: opacity 2s;
+                color: black;
+                pointer-events: none;
+        }
 }

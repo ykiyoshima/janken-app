@@ -1,8 +1,8 @@
 $(function () {
     let enemyName = ['', 'しっこくのきし', 'みならいのきし', 'もりのようせい'];
     let name = '';
-    let ySymbol = [320, 240, 480, 720]
-    let xSymbol = [1400, 960, 1200, 1440]
+    let ySymbol = [128, 32, 160, 288];
+    let xSymbol = [700, 400, 540, 680];
     let symbolId = ['#chara', '#monster', '#human', '#fairy'];
     let charaDirection = ['#chara1', '#chara2', '#chara3', '#chara4'];
     let monsterDirection = ['#monster1', '#monster2', '#monster3', '#monster4'];
@@ -14,7 +14,7 @@ $(function () {
     let notHumanDirection = [];
     let notFairyDirection = [];
     let notDirection = [notCharaDirection, notMonsterDirection, notHumanDirection, notFairyDirection];
-    let dis = 36;
+    let dis = 18;
     let battleEnemy = ['', '#battle-monster', '#battle-human', '#battle-fairy'];
     let enemy = '';
     let wins = 0;
@@ -84,7 +84,7 @@ $(function () {
             input_cmd = [];
         } else if (input_cmd.length === beat_cmd.length) {
             for (let j = 1; j < ySymbol.length; j++) {
-                if (Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[j] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[j] + 19)) ** 2)) <= 64) {
+                if (Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[j] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[j] + 19)) ** 2)) <= 32) {
                     wins = 10;
                     enemyThreshold = 10;
                     $('#enemy-hp-gauge').css('width', (100 * (enemyThreshold - wins) / enemyThreshold) + '%');
@@ -192,9 +192,9 @@ $(function () {
     $(document).on('keyup', function (e) {
         // console.log("キーコード：" + e.keyCode);
 
-        if (Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[1] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[1] + 19)) ** 2)) <= 64 ||
-            Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[2] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[2] + 19)) ** 2)) <= 64 ||
-            Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[3] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[3] + 19)) ** 2)) <= 64) {
+        if (Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[1] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[1] + 19)) ** 2)) <= 32 ||
+            Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[2] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[2] + 19)) ** 2)) <= 32 ||
+            Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[3] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[3] + 19)) ** 2)) <= 32) {
             return false;
         }
 
@@ -256,7 +256,7 @@ $(function () {
         }
 
         for (let j = 1; j < ySymbol.length; j++) {
-            if (Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[j] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[j] + 19)) ** 2)) <= 64) {
+            if (Math.sqrt((Math.abs((ySymbol[0] + 24) - (ySymbol[j] + 24)) ** 2) + (Math.abs((xSymbol[0] + 19) - (xSymbol[j] + 19)) ** 2)) <= 32) {
                 wins = 0;
                 let timerId = setInterval( ()=>{
                     // ボリュームが0になったら終了
