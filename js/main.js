@@ -1,8 +1,17 @@
 $(function () {
     let enemyName = ['', 'しっこくのきし', 'みならいのきし', 'もりのようせい'];
     let name = '';
-    let ySymbol = [128, 32, 160, 288];
-    let xSymbol = [700, 400, 540, 680];
+    let ySymbol;
+    let xSymbol;
+    if (window.matchMedia('(max-width: 600px)').matches) {
+        //スマホ処理
+        ySymbol = [128, 32, 160, 288];
+        xSymbol = [700, 400, 540, 680];
+    } else if (window.matchMedia('(min-width:601px)').matches) {
+        //PC処理
+        ySymbol = [320, 240, 480, 720];
+        xSymbol = [1400, 960, 1200, 1440];
+    }
     let symbolId = ['#chara', '#monster', '#human', '#fairy'];
     let charaDirection = ['#chara1', '#chara2', '#chara3', '#chara4'];
     let monsterDirection = ['#monster1', '#monster2', '#monster3', '#monster4'];
