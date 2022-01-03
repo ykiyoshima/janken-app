@@ -3,15 +3,16 @@ $(function () {
     let name = '';
     let ySymbol;
     let xSymbol;
-    if (window.matchMedia('(max-width: 600px)').matches) {
+    if($(window).width() < 1000) {
         //スマホ処理
         ySymbol = [128, 32, 160, 288];
         xSymbol = [700, 400, 540, 680];
-    } else if (window.matchMedia('(min-width:601px)').matches) {
+
+	} else {
         //PC処理
         ySymbol = [320, 240, 480, 720];
         xSymbol = [1400, 960, 1200, 1440];
-    }
+	}
     let symbolId = ['#chara', '#monster', '#human', '#fairy'];
     let charaDirection = ['#chara1', '#chara2', '#chara3', '#chara4'];
     let monsterDirection = ['#monster1', '#monster2', '#monster3', '#monster4'];
@@ -23,7 +24,15 @@ $(function () {
     let notHumanDirection = [];
     let notFairyDirection = [];
     let notDirection = [notCharaDirection, notMonsterDirection, notHumanDirection, notFairyDirection];
-    let dis = 18;
+    let dis;
+    if($(window).width() < 1000) {
+        //スマホ処理
+        dis = 18;
+
+	} else {
+        //PC処理
+        dis = 36;
+	}
     let battleEnemy = ['', '#battle-monster', '#battle-human', '#battle-fairy'];
     let enemy = '';
     let wins = 0;
@@ -51,7 +60,12 @@ $(function () {
     $('.title-menu').on('click', function () {
         $('#start').remove();
         $('#field-bgm').get(0).play();
-        $('#arrows').addClass('active');
+        if ($(window).width() < 1000) {
+            //スマホ処理
+            $('#arrows').addClass('active');
+        } else {
+            $('#arrows').removeClass('active');
+        }
     });
 
     $(document).on('keyup', function (e) {
