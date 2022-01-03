@@ -1003,19 +1003,19 @@ body {
         }
 
         .main-title {
-                font-size: 64px;
+                font-size: 48px;
                 padding: 4% 0;
                 margin: 0;
         }
 
         .title-menu {
-                font-size: 48px;
+                font-size: 32px;
                 margin: 4% 0 2%;
                 cursor: pointer;
         }
 
         .caution {
-                font-size: 24px;
+                font-size: 16px;
                 margin: 0;
         }
 
@@ -1123,7 +1123,7 @@ body {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                font-size: 24px;
+                font-size: 16px;
                 z-index: 10;
                 width: 100vw;
                 height: 100vh;
@@ -1132,7 +1132,7 @@ body {
         .hp, .mp {
                 z-index: 30;
                 color: white;
-                font-size: 12px;
+                font-size: 8px;
                 margin: 0;
         }
 
@@ -1249,7 +1249,7 @@ body {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                font-size: 32px;
+                font-size: 24px;
                 opacity: 0;
                 z-index: 100;
                 transition: opacity 2s;
@@ -1497,7 +1497,7 @@ body {
                 height: 32vh;
                 z-index: 25;
                 color: white;
-                font-size: 24px;
+                font-size: 16px;
                 border: 3px solid white;
                 border-radius: 8px;
         }
@@ -1529,7 +1529,7 @@ body {
 
         .command p {
                 margin: 0;
-                font-size: 24px;
+                font-size: 16px;
                 border: 2px solid white;
                 padding: 8px 8px 24px 8px;
                 cursor: pointer;
@@ -1541,7 +1541,7 @@ body {
         }
 
         .command p + p {
-                font-size: 12px;
+                font-size: 8px;
                 border: none;
                 padding: 0;
                 margin: 0;
@@ -1553,7 +1553,7 @@ body {
         #retry {
                 display: none;
                 color: white;
-                font-size: 32px;
+                font-size: 24px;
                 cursor: pointer;
                 z-index: 25;
                 margin: 0;
@@ -1572,7 +1572,7 @@ body {
                 display: flex;
                 justify-content: flex-start;
                 align-items:center;
-                font-size: 32px;
+                font-size: 24px;
                 opacity: 0;
                 transition: top 45s;
                 z-index: 100;
@@ -1588,7 +1588,7 @@ body {
         }
 
         #ending #ending-title {
-                font-size: 64px;
+                font-size: 48px;
                 padding: 80px 0;
         }
 
@@ -1601,7 +1601,7 @@ body {
                 margin: auto;
                 padding: 80px 0;
                 text-align: center;
-                font-size: 64px;
+                font-size: 48px;
                 opacity: 0;
                 z-index: 101;
                 transition: opacity 2s;
